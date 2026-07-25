@@ -8,6 +8,6 @@ export const routes: Routes = [
   },
   {
     path: 'factory-method',
-    loadComponent: () => import('./factory-method/factory-method').then((m) => m.FactoryMethod),
+    loadChildren: () => import('./factory-method/factory-method-routes').then((m) => m.factoryMethodRoutes),
   },
 ];
