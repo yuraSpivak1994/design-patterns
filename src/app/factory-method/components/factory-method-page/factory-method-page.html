@@ -1,0 +1,40 @@
+<main class="factory-method-page">
+  <h1>Factory Method</h1>
+
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel" aria-label="Notification pages">
+    <a
+      mat-tab-link
+      routerLink="email-notification"
+      routerLinkActive
+      #emailLink="routerLinkActive"
+      [active]="emailLink.isActive"
+      ariaCurrentWhenActive="page"
+    >
+      Email Notification
+    </a>
+    <a
+      mat-tab-link
+      routerLink="sms-notification"
+      routerLinkActive
+      #smsLink="routerLinkActive"
+      [active]="smsLink.isActive"
+      ariaCurrentWhenActive="page"
+    >
+      SMS Notification
+    </a>
+    <a
+      mat-tab-link
+      routerLink="push-notification"
+      routerLinkActive
+      #pushLink="routerLinkActive"
+      [active]="pushLink.isActive"
+      ariaCurrentWhenActive="page"
+    >
+      Push Notification
+    </a>
+  </nav>
+
+  <mat-tab-nav-panel #tabPanel class="notification-content">
+    <router-outlet />
+  </mat-tab-nav-panel>
+</main>
