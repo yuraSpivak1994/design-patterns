@@ -1,0 +1,14 @@
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 480px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  justify-self: start;
+}

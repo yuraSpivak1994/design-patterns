@@ -4,8 +4,9 @@
   <nav mat-tab-nav-bar [tabPanel]="tabPanel" aria-label="Notification pages">
     <a
       mat-tab-link
+      class="notification-tab email-tab"
       routerLink="email-notification"
-      routerLinkActive
+      routerLinkActive="active-tab"
       #emailLink="routerLinkActive"
       [active]="emailLink.isActive"
       ariaCurrentWhenActive="page"
@@ -14,8 +15,9 @@
     </a>
     <a
       mat-tab-link
+      class="notification-tab sms-tab"
       routerLink="sms-notification"
-      routerLinkActive
+      routerLinkActive="active-tab"
       #smsLink="routerLinkActive"
       [active]="smsLink.isActive"
       ariaCurrentWhenActive="page"
@@ -24,8 +26,9 @@
     </a>
     <a
       mat-tab-link
+      class="notification-tab push-tab"
       routerLink="push-notification"
-      routerLinkActive
+      routerLinkActive="active-tab"
       #pushLink="routerLinkActive"
       [active]="pushLink.isActive"
       ariaCurrentWhenActive="page"

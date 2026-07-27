@@ -17,6 +17,10 @@ html {
       density: 0,
     )
   );
+
+  --notification-email-color: #006b5f;
+  --notification-sms-color: #1d4ed8;
+  --notification-push-color: #a33b00;
 }
 
 body {
@@ -36,4 +40,27 @@ body {
   margin: 0;
   height: 100%;
 }
+
+.notification-tab {
+  --mdc-tab-indicator-active-indicator-color: var(--notification-tab-color);
+  --mat-tab-header-active-label-text-color: var(--notification-tab-color);
+  --mat-tab-header-active-focus-label-text-color: var(--notification-tab-color);
+  --mat-tab-header-active-hover-label-text-color: var(--notification-tab-color);
+  --mat-tab-header-inactive-label-text-color: var(--notification-tab-color);
+  --mat-tab-header-inactive-focus-label-text-color: var(--notification-tab-color);
+  --mat-tab-header-inactive-hover-label-text-color: var(--notification-tab-color);
+}
+
+.email-tab {
+  --notification-tab-color: var(--notification-email-color);
+}
+
+.sms-tab {
+  --notification-tab-color: var(--notification-sms-color);
+}
+
+.push-tab {
+  --notification-tab-color: var(--notification-push-color);
+}
+
 /* You can add global styles to this file, and also import other style files */
