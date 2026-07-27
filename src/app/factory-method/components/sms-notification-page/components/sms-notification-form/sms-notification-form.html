@@ -1,1 +1,43 @@
+<form>
+  <mat-form-field appearance="outline">
+    <mat-label>First name</mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="given-name"
+      [formField]="smsNotificationForm.firstName"
+    />
+  </mat-form-field>
 
+  <mat-form-field appearance="outline">
+    <mat-label>Last name</mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="family-name"
+      [formField]="smsNotificationForm.lastName"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Phone</mat-label>
+    <input
+      matInput
+      type="tel"
+      autocomplete="tel"
+      [formField]="smsNotificationForm.phone"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sender name</mat-label>
+    <input matInput type="text" [formField]="smsNotificationForm.senderName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Message</mat-label>
+    <textarea matInput rows="5" [formField]="smsNotificationForm.message"></textarea>
+  </mat-form-field>
+
+  <button matButton="filled" type="submit">Send SMS</button>
+</form>
