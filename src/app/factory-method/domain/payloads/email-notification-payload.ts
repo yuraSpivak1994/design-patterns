@@ -1,13 +1,12 @@
 import { EmailNotificationPayloadParams } from '../models/email-notification-payload-params.models';
-import { NotificationChannel, NotificationPayload, NotificationPreview } from './notification-payload';
+import { NotificationChannel, NotificationPayload } from './notification-payload';
 
-export class EmailNotificationPayload implements NotificationPayload<NotificationPreview<EmailNotificationPayloadParams>> {
+export class EmailNotificationPayload implements NotificationPayload<EmailNotificationPayloadParams> {
+  readonly channel = NotificationChannel.EMAIL;
+
   constructor(readonly payload: EmailNotificationPayloadParams) {}
 
-  public toPreview(): NotificationPreview<EmailNotificationPayloadParams> {
-    return {
-      channel: NotificationChannel.EMAIL,
-      previewPayload: this.payload,
-    };
+  public toPreview(): EmailNotificationPayloadParams {
+    return this.payload;
   }
 }

@@ -1,14 +1,12 @@
-import { NotificationChannel, NotificationPreview } from './notification-payload';
 import { SmsNotificationPayloadParams } from '../models/sms-notification-payload-params.models';
+import { NotificationChannel, NotificationPayload } from './notification-payload';
 
-export class SmsNotificationPayload {
+export class SmsNotificationPayload implements NotificationPayload<SmsNotificationPayloadParams> {
   readonly channel = NotificationChannel.SMS;
-  constructor(public payload: SmsNotificationPayloadParams) {
-  }
-  public toPreview(): NotificationPreview<SmsNotificationPayloadParams> {
-    return {
-      channel: this.channel,
-      previewPayload: this.payload
-    };
+
+  constructor(public payload: SmsNotificationPayloadParams) {}
+
+  public toPreview(): SmsNotificationPayloadParams {
+    return this.payload;
   }
 }

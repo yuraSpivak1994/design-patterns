@@ -1,14 +1,12 @@
 import { PushNotificationPayloadParams } from '../models/push-notification-payload-params.models';
-import { NotificationChannel, NotificationPreview } from './notification-payload';
+import { NotificationChannel, NotificationPayload } from './notification-payload';
 
-export class PushNotificationPayload {
+export class PushNotificationPayload implements NotificationPayload<PushNotificationPayloadParams> {
   readonly channel = NotificationChannel.PUSH;
-  constructor(public payload: PushNotificationPayloadParams) {
-  }
-  public toPreview(): NotificationPreview<PushNotificationPayloadParams> {
-    return {
-      channel: this.channel,
-      previewPayload: this.payload
-    };
+
+  constructor(public payload: PushNotificationPayloadParams) {}
+
+  public toPreview(): PushNotificationPayloadParams {
+    return this.payload;
   }
 }
