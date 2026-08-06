@@ -24,13 +24,12 @@ export class SmsNotificationFormComponent {
     })
   );
 
-  private creator = new SmsNotificationPayloadCreator();
-  protected preview = signal<SmsNotificationPayloadParams | null>(null);
+  private readonly creator = new SmsNotificationPayloadCreator();
+  protected readonly preview = signal<SmsNotificationPayloadParams | null>(null);
 
-  public submit($event: SubmitEvent) {
-    $event.preventDefault();
+  public submit(event: SubmitEvent): void {
+    event.preventDefault();
 
-    const formValue = this.smsNotificationForm().value;
-    this.preview.set(this.creator.createPreview(formValue()));
+    this.preview.set(this.creator.createPreview(this.smsNotificationForm().value()));
   }
 }

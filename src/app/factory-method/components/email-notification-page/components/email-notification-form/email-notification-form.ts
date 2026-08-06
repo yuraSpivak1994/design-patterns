@@ -21,16 +21,15 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './email-notification-form.scss',
 })
 export class EmailNotificationFormComponent {
-  private readonly formValue = signal<EmailNotificationForm>({
-    email: '',
-    message: '',
-    subject: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
-  });
   protected emailNotificationForm: FieldTree<EmailNotificationForm> = form<EmailNotificationForm>(
-    this.formValue
+    signal({
+      email: '',
+      message: '',
+      subject: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+    })
   );
 
   protected readonly preview = signal<EmailNotificationPayloadParams | null>(null);
@@ -39,7 +38,6 @@ export class EmailNotificationFormComponent {
   public submit(event: SubmitEvent): void {
     event.preventDefault();
 
-    const formValue = this.formValue();
-    this.preview.set(this.creator.createPreview(formValue));
+    this.preview.set(this.creator.createPreview(this.emailNotificationForm().value()));
   }
 }

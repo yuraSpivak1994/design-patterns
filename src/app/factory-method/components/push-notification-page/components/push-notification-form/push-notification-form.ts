@@ -24,13 +24,12 @@ export class PushNotificationFormComponent {
     })
   );
 
-  private pushNotificationPayloadCreator = new PushNotificationPayloadCreator();
+  private readonly creator = new PushNotificationPayloadCreator();
   protected readonly preview = signal<PushNotificationPayloadParams | null>(null);
 
-  public submit($event: SubmitEvent) {
-    $event.preventDefault();
+  public submit(event: SubmitEvent): void {
+    event.preventDefault();
 
-    const formValue = this.pushNotificationForm().value;
-    this.preview.set(this.pushNotificationPayloadCreator.createPreview(formValue()));
+    this.preview.set(this.creator.createPreview(this.pushNotificationForm().value()));
   }
 }
