@@ -37,31 +37,6 @@
   <button matButton="filled" type="submit">Send push</button>
 </form>
 
-@if (preview(); as pushPreview) {
-  <mat-card appearance="outlined" class="preview-card">
-    <mat-card-header>
-      <mat-card-title>Push preview</mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-      <dl class="preview-list">
-        <div>
-          <dt>Name</dt>
-          <dd>{{ pushPreview.firstName }} {{ pushPreview.lastName }}</dd>
-        </div>
-        <div>
-          <dt>Device token</dt>
-          <dd>{{ pushPreview.deviceToken }}</dd>
-        </div>
-        <div>
-          <dt>Title</dt>
-          <dd>{{ pushPreview.title }}</dd>
-        </div>
-        <div>
-          <dt>Message</dt>
-          <dd>{{ pushPreview.message }}</dd>
-        </div>
-      </dl>
-    </mat-card-content>
-  </mat-card>
+@if (previewItems(); as pushPreviewItems) {
+  <app-notification-preview-card title="Push preview" [items]="pushPreviewItems" />
 }

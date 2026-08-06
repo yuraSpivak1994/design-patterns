@@ -1,0 +1,16 @@
+<mat-card appearance="outlined" class="preview-card">
+  <mat-card-header>
+    <mat-card-title>{{ title() }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <dl class="preview-list">
+      @for (item of items(); track item.label) {
+        <div>
+          <dt>{{ item.label }}</dt>
+          <dd>{{ item.value }}</dd>
+        </div>
+      }
+    </dl>
+  </mat-card-content>
+</mat-card>

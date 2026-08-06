@@ -1,15 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { FieldTree, FormField, form } from '@angular/forms/signals';
 import { MatButton } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { SmsNotificationForm } from './sms-notification-form.models';
 import { SmsNotificationPayloadCreator } from '../../../../domain/creators/sms-notification-payload.creator';
 import { SmsNotificationPayloadParams } from '../../../../domain/models/sms-notification-payload-params.models';
+import { NotificationPreviewCardComponent } from '../../../notification-preview-card/notification-preview-card';
 
 @Component({
   selector: 'app-sms-notification-form',
-  imports: [MatCardModule, MatFormField, MatLabel, MatInput, MatButton, FormField],
+  imports: [NotificationPreviewCardComponent, MatFormField, MatLabel, MatInput, MatButton, FormField],
   templateUrl: './sms-notification-form.html',
   styleUrl: './sms-notification-form.scss',
 })
@@ -26,6 +26,18 @@ export class SmsNotificationFormComponent {
 
   private readonly creator = new SmsNotificationPayloadCreator();
   protected readonly preview = signal<SmsNotificationPayloadParams | null>(null);
+  protected readonly previewItems = computed(() => {
+    const preview = this.preview();
+
+    return preview
+      ? [
+          { label: 'Name', value: `${preview.firstName} ${preview.lastName}`.trim() },
+          { label: 'Phone', value: preview.phone },
+          { label: 'Sender name', value: preview.senderName },
+          { label: 'Message', value: preview.message },
+        ]
+      : null;
+  });
 
   public submit(event: SubmitEvent): void {
     event.preventDefault();
