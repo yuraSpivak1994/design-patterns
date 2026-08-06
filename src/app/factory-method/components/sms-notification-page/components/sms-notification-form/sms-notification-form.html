@@ -1,4 +1,4 @@
-<form>
+<form (submit)="submit($event)">
   <mat-form-field appearance="outline">
     <mat-label>First name</mat-label>
     <input
@@ -41,3 +41,32 @@
 
   <button matButton="filled" type="submit">Send SMS</button>
 </form>
+
+@if (preview(); as smsPreview) {
+  <mat-card appearance="outlined" class="preview-card">
+    <mat-card-header>
+      <mat-card-title>SMS preview</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <dl class="preview-list">
+        <div>
+          <dt>Name</dt>
+          <dd>{{ smsPreview.firstName }} {{ smsPreview.lastName }}</dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd>{{ smsPreview.phone }}</dd>
+        </div>
+        <div>
+          <dt>Sender name</dt>
+          <dd>{{ smsPreview.senderName }}</dd>
+        </div>
+        <div>
+          <dt>Message</dt>
+          <dd>{{ smsPreview.message }}</dd>
+        </div>
+      </dl>
+    </mat-card-content>
+  </mat-card>
+}

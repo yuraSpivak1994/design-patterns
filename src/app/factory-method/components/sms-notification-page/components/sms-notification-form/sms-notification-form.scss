@@ -12,3 +12,27 @@ mat-form-field {
 button {
   justify-self: start;
 }
+
+.preview-card {
+  max-width: 480px;
+  margin-top: 24px;
+}
+
+.preview-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.preview-list div {
+  display: grid;
+  gap: 4px;
+}
+
+.preview-list dt {
+  font-weight: 600;
+}
+
+.preview-list dd {
+  margin: 0;
+}
